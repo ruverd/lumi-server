@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id           String   @id @default(uuid())
+  clientNumber BigInt   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  electricityBills ElectricityBill[]
+
+  @@map("clients")
+}
+
+model ElectricityBill {
+  id                   String   @id @default(uuid())
+  clientId             String
+  billTotalAmount      Int // field for 'Valor Total da Fatura'
+  refMonth             Int // field for 'Mês referência'
+  refYear              Int // field for 'Ano referência'
+  electricityKwh       Int // field for 'Energia Elétrica Quantidade'
+  electricityAmount    Int // field for 'Energia Elétrica Valor'
+  netMeteringKwh       Int? // Optional field for 'Energia SCEE s/ ICMS Quantidade'
+  netMeteringAmount    Int? // Optional field for 'Energia SCEE s/ ICMS Valor'
+  netMeteredKwh        Int? // Optional field for 'Energia compensada GD I Quantidade'
+  netMeteredAmount     Int? // Optional field for 'Energia compensada GD I Valor'
+  municipalLightingTax Int? // Optional field for 'Contrib Ilum Publica Municipal
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  client Client @relation(fields: [clientId], references: [id])
+
+  @@map("electricityBills")
+}

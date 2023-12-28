@@ -1,0 +1,10 @@
+-- AlterTable
+ALTER TABLE "clients" ALTER COLUMN "clientNumber" SET DATA TYPE BIGINT;
+
+-- AlterTable
+ALTER TABLE "electricityBills" ALTER COLUMN "billNumber" SET DATA TYPE BIGINT,
+ALTER COLUMN "billTotalAmount" SET DATA TYPE BIGINT,
+ALTER COLUMN "electricityAmount" SET DATA TYPE BIGINT,
+ALTER COLUMN "netMeteringAmount" SET DATA TYPE BIGINT,
+ALTER COLUMN "municipalLightingTax" SET DATA TYPE BIGINT,
+ALTER COLUMN "netMeteredAmount" SET DATA TYPE BIGINT;

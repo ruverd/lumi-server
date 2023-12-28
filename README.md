@@ -53,8 +53,8 @@ $ npm run test
 # e2e tests
 $ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
+# unit test
+$ npm run test
 ```
 
 ## Stay in touch

@@ -53,6 +53,7 @@ async function processFile(file: string) {
     await prisma.electricityBill.create({
       data: {
         clientId: client.id,
+        fileName: file,
         billTotalAmount,
         refMonth: refDate.month,
         refYear: refDate.year,

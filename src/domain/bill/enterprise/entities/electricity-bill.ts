@@ -7,6 +7,9 @@ class ElectricityBill extends BaseEntity {
   @Field(() => String)
   clientId: string;
 
+  @Field(() => String)
+  fileName: string;
+
   @Field(() => Int)
   billTotalAmount: number;
 

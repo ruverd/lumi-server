@@ -8,6 +8,10 @@ export class CreateElectricityBillDTO {
   clientId: string;
 
   @IsNotEmpty()
+  @Field(() => String)
+  fileName: string;
+
+  @IsNotEmpty()
   @Field(() => Int)
   billTotalAmount: number;
 

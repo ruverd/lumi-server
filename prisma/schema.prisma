@@ -24,6 +24,7 @@ model Client {
 model ElectricityBill {
   id                   String   @id @default(uuid())
   clientId             String
+  fileName             String // field for 'Nome do Arquivo'
   billTotalAmount      Int // field for 'Valor Total da Fatura'
   refMonth             Int // field for 'Mês referência'
   refYear              Int // field for 'Ano referência'

@@ -31,7 +31,7 @@ export class FetchElectricityBillsUseCase {
   ) {}
 
   async execute({
-    filter = {},
+    filter,
   }: FetchElectricityBillsUseCaseRequest): Promise<FetchElectricityBillsUseCaseResponse> {
     if (filter?.clientId) {
       console.log('filter.clientId', filter.clientId);

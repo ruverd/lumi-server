@@ -1,3 +1,4 @@
+import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 
 import { ResourceNotFoundError } from '@/core/errors/resource-not-found-error';
@@ -7,7 +8,6 @@ import { FetchElectricityBillFilterDTO } from '@/domain/bill/application/dtos/fe
 import { FetchElectricityBillUseCase } from '@/domain/bill/application/use-cases/fetch-electriicity-bill';
 import { FetchElectricityBillsUseCase } from '@/domain/bill/application/use-cases/fetch-electriicity-bills';
 import { ElectricityBill } from '@/domain/bill/enterprise/entities/electricity-bill';
-import { BadRequestException, NotFoundException } from '@nestjs/common';
 
 @Resolver(() => ElectricityBill)
 export class ElectricityBillResolver {
@@ -63,9 +63,13 @@ export class ElectricityBillResolver {
       };
     }
 
-    const result = await this.fetchElectricityBillsUserCase.execute({
-      ...filterParams,
-    });
+    const result = filter
+      ? await this.fetchElectricityBillsUserCase.execute({
+          filter: {
+            ...filterParams,
+          },
+        })
+      : await this.fetchElectricityBillsUserCase.execute({});
 
     if (result.isLeft()) {
       const error = result.value;
@@ -79,6 +83,8 @@ export class ElectricityBillResolver {
     }
 
     const { electricityBills } = result.value;
+
+    return electricityBills;
   }
 
   @ResolveField(() => Client, { nullable: true })

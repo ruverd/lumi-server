@@ -25,27 +25,25 @@ export class PrismaElectricityBillsRepository
   }
 
   async findAll(filter?: FilterElectricityBill): Promise<ElectricityBill[]> {
-    const { clientId, refDate } = filter;
+    let where = {};
 
-    let whereClause = {};
-
-    if (clientId) {
-      whereClause = {
-        ...whereClause,
-        clientId,
+    if (filter?.clientId) {
+      where = {
+        ...where,
+        clientId: filter.clientId,
       };
     }
 
-    if (refDate) {
-      whereClause = {
-        ...whereClause,
-        refMonth: refDate.month,
-        refYear: refDate.year,
+    if (filter?.refDate) {
+      where = {
+        ...where,
+        refMonth: filter.refDate.month,
+        refYear: filter.refDate.year,
       };
     }
 
     const electricityBills = await this.prisma.electricityBill.findMany({
-      where: whereClause,
+      where,
       orderBy: [
         {
           refYear: 'desc',

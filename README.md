@@ -17,6 +17,9 @@ ps: You need to have docker installed on your machine and check if you already h
 ```bash
 # create database
 docker compose up -d
+
+# create seed data (It will create based on electricity bill files)
+npm run seed
 ```
 
 ## Running the app

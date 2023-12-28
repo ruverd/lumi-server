@@ -9,10 +9,6 @@ export class CreateElectricityBillDTO {
 
   @IsNotEmpty()
   @Field(() => Int)
-  billNumber: number;
-
-  @IsNotEmpty()
-  @Field(() => Int)
   billTotalAmount: number;
 
   @IsNotEmpty()

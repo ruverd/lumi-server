@@ -10,9 +10,11 @@ export type FilterElectricityBill = {
 };
 
 export abstract class ElectricityBillsRepository {
-  abstract findById(id: string): Promise<ElectricityBill>;
+  abstract findById(id: string): Promise<ElectricityBill | null>;
   abstract findAll(filter?: FilterElectricityBill): Promise<ElectricityBill[]>;
-  abstract create(client: CreateElectricityBillDTO): Promise<ElectricityBill>;
+  abstract create(
+    electricityBill: CreateElectricityBillDTO,
+  ): Promise<ElectricityBill>;
   abstract update(
     id: string,
     client: Partial<ElectricityBill>,

@@ -3,8 +3,8 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'node:path';
 
-import { FetchElectricityBillUseCase } from '@/domain/bill/application/use-cases/fetch-electriicity-bill';
-import { FetchElectricityBillsUseCase } from '@/domain/bill/application/use-cases/fetch-electriicity-bills';
+import { FetchElectricityBillUseCase } from '@/domain/bill/application/use-cases/fetch-electricity-bill';
+import { FetchElectricityBillsUseCase } from '@/domain/bill/application/use-cases/fetch-electricity-bills';
 import { DatabaseModule } from '@/infra/database/database.module';
 import { ElectricityBillResolver } from '@/infra/http/resolvers/electricity-bill.resolver';
 

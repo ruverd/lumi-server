@@ -19,7 +19,7 @@ export class PrismaClientsRepository implements ClientsRepository {
     return client;
   }
 
-  async findByClientNumber(clientNumber: number): Promise<Client> {
+  async findByClientNumber(clientNumber: string): Promise<Client> {
     const client = await this.prisma.client.findFirst({
       where: {
         clientNumber,

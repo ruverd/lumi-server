@@ -1,6 +1,6 @@
 import { getContentLineFiltered } from './get-content-line-filtered';
 
-export const getClientNumber = (lines: string[]): number => {
+export const getClientNumber = (lines: string[]): string => {
   let lineData = 0;
 
   const line = lines.find((line, index) => {
@@ -19,7 +19,7 @@ export const getClientNumber = (lines: string[]): number => {
 
   const contentLine = getContentLineFiltered(lines[lineData]);
 
-  const clientNumber = Number(contentLine[0]);
+  const clientNumber = contentLine[0];
 
   if (!clientNumber) {
     throw new Error('Register not found');

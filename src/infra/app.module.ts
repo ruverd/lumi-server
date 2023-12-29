@@ -14,7 +14,7 @@ import { HttpModule } from '@/infra/http/http.module';
       isGlobal: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'uploads'),
+      rootPath: join(__dirname, '..', '..', '..', 'uploads'),
     }),
     HttpModule,
     EnvModule,

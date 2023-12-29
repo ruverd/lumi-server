@@ -34,7 +34,6 @@ export class FetchElectricityBillsUseCase {
     filter,
   }: FetchElectricityBillsUseCaseRequest): Promise<FetchElectricityBillsUseCaseResponse> {
     if (filter?.clientId) {
-      console.log('filter.clientId', filter.clientId);
       const client = await this.clientsRepository.findById(filter.clientId);
 
       if (!client) {
